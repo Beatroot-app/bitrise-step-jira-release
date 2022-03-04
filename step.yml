@@ -84,7 +84,6 @@ inputs:
         The maximum length is 255 characters.
       is_expand: true
       is_required: true
-      value_options: []
   # Project
   - projectId: ""
     opts:
@@ -95,7 +94,6 @@ inputs:
         Not applicable when updating a version.
       is_expand: true
       is_required: true
-      value_options: []
 
   # Description
   - description: ""
@@ -104,7 +102,6 @@ inputs:
       description: The description of the version. Default value is an empty string.
       is_expand: true
       is_required: false
-      value_options: []
 
   # Released
   - released: false
@@ -133,7 +130,6 @@ inputs:
       description: The Jira Host URL. Default value will be https://jira.org
       is_expand: true
       is_required: false
-      value_options: []
   # User
   - user: $BITRISE_JIRA_USER
     opts:
@@ -141,7 +137,6 @@ inputs:
       description: The Jira authentication user email.
       is_expand: true
       is_required: true
-      value_options: []
   # Password
   - password: $BITRISE_JIRA_API_TOKEN
     opts:
@@ -149,9 +144,6 @@ inputs:
       description: Jira API Authorization Password / API Token.
       is_expand: true
       is_required: true
-      value_options: []
-
-
 
 # outputs:
 #   - EXAMPLE_STEP_OUTPUT:
