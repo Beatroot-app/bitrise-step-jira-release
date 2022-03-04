@@ -68,8 +68,8 @@ inputs:
   # Create or Update
   - update: false
     opts:
-      title: Create or Update version.
-      summary: When disabled, a new version will be created otherwise update existing version
+      title: Update version.
+      description: When disabled, a new version will be created otherwise update existing version
       is_expand: true
       is_required: true
       value_options: [true, false]
@@ -77,8 +77,8 @@ inputs:
   - version_name: ""
     opts:
       title: Version name
-      summary: The unique name of the version.
       description: |
+        The unique name of the version.
         Required when creating a version.
         Optional when updating a version.
         The maximum length is 255 characters.
@@ -89,8 +89,8 @@ inputs:
   - projectId: ""
     opts:
       title: Project ID
-      summary: The ID of the project to which this version is attached.
       description: |
+        The ID of the project to which this version is attached.
         Required when creating a version. 
         Not applicable when updating a version.
       is_expand: true
@@ -101,7 +101,7 @@ inputs:
   - description: ""
     opts:
       title: Description
-      summary: The description of the version. Default value is an empty string.
+      description: The description of the version. Default value is an empty string.
       is_expand: true
       is_required: false
       value_options: []
@@ -110,7 +110,7 @@ inputs:
   - released: false
     opts:
       title: Indicates that the version is released.
-      summary: |
+      description: |
         If the version is released a request to release again is ignored. 
         Not applicable when creating a version. Optional when updating a version.
       is_expand: true
@@ -121,7 +121,7 @@ inputs:
   - archived: false
     opts:
       title: Indicates that the version is archived.
-      summary: Optional when creating or updating a version.
+      description: Optional when creating or updating a version.
       is_expand: true
       is_required: true
       value_options: [true, false]
@@ -130,7 +130,7 @@ inputs:
   - url: "https://jira.org"
     opts:
       title: Jira Host URL.
-      summary: The Jira Host URL. Default value will be https://jira.org
+      description: The Jira Host URL. Default value will be https://jira.org
       is_expand: true
       is_required: false
       value_options: []
@@ -138,7 +138,7 @@ inputs:
   - user: $BITRISE_JIRA_USER
     opts:
       title: Jira Username
-      summary: The Jira authentication user email.
+      description: The Jira authentication user email.
       is_expand: true
       is_required: true
       value_options: []
@@ -146,7 +146,7 @@ inputs:
   - password: $BITRISE_JIRA_API_TOKEN
     opts:
       title: Jira Password / Auth Token
-      summary: Jira API Authorization Password / API Token.
+      description: Jira API Authorization Password / API Token.
       is_expand: true
       is_required: true
       value_options: []
