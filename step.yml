@@ -65,14 +65,31 @@ toolkit:
 
 
 inputs:
-  # Create or Update
-  - update: false
+  # Url
+  - url: "https://jira.org"
     opts:
-      title: Update version.
-      description: When disabled, a new version will be created otherwise update existing version
+      title: Jira Host URL.
+      description: The Jira Host URL. Default value will be https://jira.org
+      is_expand: true
+      is_required: false
+
+  # User
+  - user: $BITRISE_JIRA_USER
+    opts:
+      title: Jira Username
+      description: The Jira authentication user email.
       is_expand: true
       is_required: true
-      value_options: [true, false]
+
+  # Password
+  - password: $BITRISE_JIRA_API_TOKEN
+    opts:
+      title: Jira Password / Auth Token
+      description: Jira API Authorization Password / API Token.
+      is_expand: true
+      is_required: true
+      is_sensitive: true
+
   # Version Name
   - version_name: ""
     opts:
@@ -84,6 +101,7 @@ inputs:
         The maximum length is 255 characters.
       is_expand: true
       is_required: true
+
   # Project
   - projectId: ""
     opts:
@@ -103,54 +121,42 @@ inputs:
       is_expand: true
       is_required: false
 
-  # Released
-  - released: false
+  # Create or Update
+  - update: "false"
     opts:
+      category: Update
+      title: Update version.
+      description: When disabled, a new version will be created otherwise update existing version
+      is_expand: true
+      is_required: true
+      value_options: ["true", "false"]
+
+  # New Version
+  - new_version: ""
+    opts:
+      category: Update
+      title: The new name of the version to be updated.
+      is_expand: true
+      is_required: false
+
+  # Released
+  - released: "Ignore"
+    opts:
+      category: Flags
       title: Indicates that the version is released.
       description: |
         If the version is released a request to release again is ignored. 
         Not applicable when creating a version. Optional when updating a version.
       is_expand: true
-      is_required: true
-      value_options: [true, false]
+      is_required: false
+      value_options: ["Ignore", "True", "False"]
 
   # Archived
-  - archived: false
+  - archived: "false"
     opts:
+      category: Flags
       title: Indicates that the version is archived.
       description: Optional when creating or updating a version.
       is_expand: true
-      is_required: true
-      value_options: [true, false]
-
-  # Url
-  - url: "https://jira.org"
-    opts:
-      title: Jira Host URL.
-      description: The Jira Host URL. Default value will be https://jira.org
-      is_expand: true
       is_required: false
-  # User
-  - user: $BITRISE_JIRA_USER
-    opts:
-      title: Jira Username
-      description: The Jira authentication user email.
-      is_expand: true
-      is_required: true
-  # Password
-  - password: $BITRISE_JIRA_API_TOKEN
-    opts:
-      title: Jira Password / Auth Token
-      description: Jira API Authorization Password / API Token.
-      is_expand: true
-      is_required: true
-
-# outputs:
-#   - EXAMPLE_STEP_OUTPUT:
-#     opts:
-#       title: "Example Step Output"
-#       summary: Summary. No more than 2-3 sentences.
-#       description: |
-#         Description of this output.
-
-#         Can be Markdown formatted text.
+      value_options: ["Ignore", "True", "False"]
