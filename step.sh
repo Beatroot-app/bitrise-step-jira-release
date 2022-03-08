@@ -6,8 +6,10 @@ pip3 install --no-cache-dir requests argparse
 
 echo "Executing jira-release"
 
+path=$(pwd)
+
 COMMAND=$(cat << EOF
-python3 jira-release.py \
+python3 $path/jira-release.py \
     -v ${version_name} \
     -p ${projectId} \
     -u ${user} \
