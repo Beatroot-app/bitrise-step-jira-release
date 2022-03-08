@@ -97,6 +97,7 @@ if args.update:
         'maxResults': 1
     }
 
+    versionId = None
     getVersionIdUrl = ('%(url)s/rest/api/%(api_version)s/project/%(project)s/version' %{'url': args.url, 'api_version': args.api_version, 'project': args.project})
 
     try:
@@ -113,12 +114,13 @@ if args.update:
         if jsonResponse["values"] and jsonResponse["values"][0] and jsonResponse["values"][0]["id"]:
             versionId = jsonResponse["values"][0]["id"]
     except HTTPError as http_err:
-        print(f'HTTP error occurred: {http_err}')
+        print('HTTP error occurred: {error}' %{'error': http_err})
     except Exception as err:
-        print(f'Other error occurred: {err}')
+        print('Other error occurred: {error}' %{'error': err})
 
     if versionId == None:
-        exit('Unable to retrieve version ID for %(version)s. \nUsage:\n %(usage)s' %{'version': args.version, 'usage': parser.print_usage()})
+        print(parser.print_usage())
+        exit('Unable to retrieve version ID for %(version)s.' %{'version': args.version})
 
     if args.new_version != None:
         data['name'] = args.new_version
@@ -144,6 +146,6 @@ try:
         print("Oops! Something went wrong.")
         print(response)
 except HTTPError as http_err:
-    print(f'HTTP error occurred: {http_err}')
+    print('HTTP error occurred: {error}' %{'error': http_err})
 except Exception as err:
-    print(f'Other error occurred: {err}')
+    print('Other error occurred: {error}' %{'error': err})

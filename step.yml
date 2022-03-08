@@ -122,14 +122,14 @@ inputs:
       is_required: false
 
   # Create or Update
-  - update: "false"
+  - update: "False"
     opts:
       category: Update
       title: Update version.
       description: When disabled, a new version will be created otherwise update existing version
       is_expand: true
       is_required: true
-      value_options: ["true", "false"]
+      value_options: ["True", "False"]
 
   # New Version
   - new_version: ""
@@ -152,7 +152,7 @@ inputs:
       value_options: ["Ignore", "True", "False"]
 
   # Archived
-  - archived: "false"
+  - archived: "Ignore"
     opts:
       category: Flags
       title: Indicates that the version is archived.
