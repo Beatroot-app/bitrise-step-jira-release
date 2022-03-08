@@ -134,6 +134,7 @@ else:
 
 try:
     payload = json.dumps(data)
+    print("\nWill request to %(url)s" %{'url': api_url})
     print("\nPayload:")
     print(payload)
 
