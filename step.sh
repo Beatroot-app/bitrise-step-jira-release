@@ -2,7 +2,7 @@
 set -ex
 
 echo "Installing required deppendencies"
-pip install --no-cache-dir requests argparse
+pip3 install --no-cache-dir requests argparse
 
 echo "Executing jira-release"
 
