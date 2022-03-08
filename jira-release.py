@@ -57,8 +57,6 @@ args = parser.parse_args()
 if args.api_version != 2 and args.api_version != 3:
     exit(parser.print_usage())
 
-jira_version_date = datetime.today().strftime('%Y-%m-%d')
-
 auth = HTTPBasicAuth(args.user, args.password)
 headers = {
     "Accept": "application/json",
@@ -78,7 +76,7 @@ if args.released != None:
     data['released'] = args.released
     # If released
     if args.released:
-        data['userReleaseDate'] = jira_version_date
+        data['userReleaseDate'] = datetime.today().strftime('%d/%b/%y')
 
 # Include archived
 if args.archived != None:
@@ -129,7 +127,7 @@ if args.update:
     api_url = ('%(url)s/rest/api/%(api_version)s/version/%(version)s' %{'url': args.url, 'api_version': args.api_version, 'version': versionId})
 else:
     data['name'] = args.version
-    data['startDate'] = jira_version_date
+    data['startDate'] = datetime.today().strftime('%Y-%m-%d')
     api_url = ('%(url)s/rest/api/%(api_version)s/version' %{'url': args.url, 'api_version': args.api_version})
 
 try:
