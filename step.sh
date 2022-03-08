@@ -32,3 +32,5 @@ fi
 if [ "${archived}" != "Ignore" ] && [ ! -z "${new_version}" -a "${new_version}" != " " ]; then
     COMMAND="$COMMAND --archived ${archived}"
 fi
+
+eval $COMMAND
