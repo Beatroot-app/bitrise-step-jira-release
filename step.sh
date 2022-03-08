@@ -14,10 +14,13 @@ python3 $THIS_SCRIPT_DIR/jira-release.py \
     -p ${projectId} \
     -u ${user} \
     --password ${password} \
-    --update ${update} \
     --url ${url}
 EOF
 )
+
+if [ "${update}" == "true" ] && [ ! -z "${update}" -a "${update}" != " " ]; then
+    COMMAND="$COMMAND --update ${update}"
+fi
 
 if [ ! -z "${new_version}" -a "${new_version}" != " " ]; then
     COMMAND="$COMMAND --new-version ${new_version}"
