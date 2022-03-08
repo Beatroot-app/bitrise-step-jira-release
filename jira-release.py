@@ -115,8 +115,10 @@ if args.update:
             versionId = jsonResponse["values"][0]["id"]
     except HTTPError as http_err:
         print('HTTP error occurred: {error}' %{'error': http_err})
+        exit(10)
     except Exception as err:
         print('Other error occurred: {error}' %{'error': err})
+        exit(10)
 
     if versionId == None:
         print(parser.print_usage())
@@ -131,10 +133,14 @@ else:
     api_url = ('%(url)s/rest/api/%(api_version)s/version' %{'url': args.url, 'api_version': args.api_version})
 
 try:
+    payload = json.dumps(data)
+    print("\nPayload:")
+    print(payload)
+
     response = requests.request(
         restMethod,
         api_url,
-        data=json.dumps(data),
+        data=payload,
         headers=headers,
         auth=auth
     )
@@ -145,7 +151,10 @@ try:
     else:
         print("Oops! Something went wrong.")
         print(response)
+        exit(10)
 except HTTPError as http_err:
     print('HTTP error occurred: {error}' %{'error': http_err})
+    exit(10)
 except Exception as err:
     print('Other error occurred: {error}' %{'error': err})
+    exit(10)
